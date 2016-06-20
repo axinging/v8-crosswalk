@@ -1215,6 +1215,14 @@
         }, {
           'toolsets': ['target'],
         }],
+        ['OS=="android" and _toolset=="target"', {
+          'libraries': [
+            '-llog',
+          ],
+          'include_dirs': [
+            'src/common/android/include',
+          ],
+        }],
         ['v8_target_arch=="arm"', {
           'sources': [  ### gcmole(arch:arm) ###
             '../../src/arm/assembler-arm-inl.h',
@@ -1757,6 +1765,14 @@
             ],
             'link_settings': {
               'target_conditions': [
+                ['OS=="android" and _toolset=="target"', {
+                  'libraries': [
+                    '-llog',
+                  ],
+                  'include_dirs': [
+                    'src/common/android/include',
+                  ],
+                }],
                 ['_toolset=="host"', {
                   # Only include libdl and librt on host builds because they
                   # are included by default on Android target builds, and we
